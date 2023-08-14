@@ -1,3 +1,4 @@
+/// a model for post
 class Post {
   int userId;
   int id;

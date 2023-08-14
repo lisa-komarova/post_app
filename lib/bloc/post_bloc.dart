@@ -4,6 +4,7 @@ import 'package:post_app/bloc/post_state.dart';
 import 'package:post_app/data/post_repository.dart';
 import 'package:post_app/models/post.dart';
 
+///receives event and coverts it into states
 class PostBloc extends Bloc<PostLoadEvent, PostState> {
   PostBloc() : super(PostEmptyState()) {
     on<PostLoadEvent>(

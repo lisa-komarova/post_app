@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:post_app/models/post.dart';
 import 'package:http/http.dart' as http;
 
+///fetches the data from jsonplaceholder and parses it into the list of posts
 class PostProvider {
   Future<List<Post>> fetchPosts() async {
     final response =

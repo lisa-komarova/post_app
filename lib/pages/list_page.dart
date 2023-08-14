@@ -5,6 +5,7 @@ import 'package:post_app/bloc/post_bloc.dart';
 import 'package:post_app/bloc/post_event.dart';
 import 'package:post_app/widgets/post_list.dart';
 
+/// A widget that represents the page which contains appbar with a title and list of posts
 class ListPage extends StatefulWidget {
   const ListPage({super.key});
 

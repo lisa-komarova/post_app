@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:post_app/models/post.dart';
 
+/// A widget that represents the page which contains detail information about a post
 class DetailsPage extends StatelessWidget {
   final Post post;
   const DetailsPage({required this.post, super.key});
