@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:post_app/bloc/post_bloc.dart';
 import 'package:post_app/bloc/post_state.dart';
+import 'package:post_app/pages/details_page.dart';
 
 class PostList extends StatelessWidget {
   const PostList({super.key});
@@ -21,57 +22,61 @@ class PostList extends StatelessWidget {
       } else if (state is PostLoadedState) {
         return ListView.builder(
           itemCount: state.posts.length,
-          itemBuilder: (context, index) => Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    color: const Color.fromARGB(255, 223, 227, 247)),
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        child: Text(
-                          state.posts[index].title,
-                          style: GoogleFonts.lato(
-                              fontWeight: FontWeight.bold, fontSize: 16),
+          itemBuilder: (context, index) => GestureDetector(
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                builder: (ctx) => DetailsPage(post: state.posts[index]))),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: const Color.fromARGB(255, 223, 227, 247)),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          child: Text(
+                            state.posts[index].title,
+                            style: GoogleFonts.lato(
+                                fontWeight: FontWeight.bold, fontSize: 16),
+                          ),
                         ),
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      Column(children: [
-                        Text(
-                          'User ID',
-                          style: GoogleFonts.lato(
-                              color: const Color.fromARGB(255, 99, 99, 99)),
+                        const SizedBox(
+                          width: 10,
                         ),
-                        Text(
-                          '${state.posts[index].userId}',
-                          style: GoogleFonts.lato(),
-                        )
-                      ]),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      Column(
-                        children: [
+                        Column(children: [
                           Text(
-                            'Post ID',
+                            'User ID',
                             style: GoogleFonts.lato(
                                 color: const Color.fromARGB(255, 99, 99, 99)),
                           ),
                           Text(
-                            '${state.posts[index].id}',
+                            '${state.posts[index].userId}',
                             style: GoogleFonts.lato(),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                )),
+                          )
+                        ]),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Column(
+                          children: [
+                            Text(
+                              'Post ID',
+                              style: GoogleFonts.lato(
+                                  color: const Color.fromARGB(255, 99, 99, 99)),
+                            ),
+                            Text(
+                              '${state.posts[index].id}',
+                              style: GoogleFonts.lato(),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  )),
+            ),
           ),
         );
       }

@@ -29,7 +29,7 @@ class _ListPageState extends State<ListPage> {
             title: Text(
               'Messages',
               style:
-                  GoogleFonts.lato(fontWeight: FontWeight.bold, fontSize: 36),
+                  GoogleFonts.lato(fontWeight: FontWeight.bold, fontSize: 25),
             ),
           ),
           body: const PostList()),
